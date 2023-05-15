@@ -3,12 +3,12 @@ import java.util.Date;
 public class Rental {
     private int id;
     private Customer customer;
-    private Movie movie;
+    private Item item;
     private Date rentaldate;
     private Date returndate;
 
-    public Rental(Movie movie,Customer customer,int id){
-        this.movie = movie;
+    public Rental(Item item,Customer customer,int id){
+        this.item = item;
         this.customer = customer;
         this.id = id;
         Date date = new Date();
@@ -19,8 +19,8 @@ public class Rental {
         return id;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public Item getItem() {
+        return item;
     }
 
     public Customer getCustomer() {
@@ -39,7 +39,4 @@ public class Rental {
         this.returndate = returndate;
     }
 
-    public double calculateLateFee(){
-        return 0;
-    }
 }

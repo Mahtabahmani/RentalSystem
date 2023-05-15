@@ -2,42 +2,44 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class RentalStore {
-    ArrayList<Customer> customers = new ArrayList<>();
-    ArrayList<Movie> movies = new ArrayList<>();
-    ArrayList<Rental> rentals = new ArrayList<>();
+    private ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Rental> rentals = new ArrayList<>();
 
     public RentalStore(){
 
     }
     public void Register(Customer customer){
+
         customers.add(customer);
     }
-    public void addMovie(Movie movie){
-        movies.add(movie);
+    public void addItem(Item item){
+
+        items.add(item);
     }
-    public void removeMovie(Movie movie){
-        movies.remove(movie);
+    public void removeItem(Item item){
+        items.remove(item);
     }
-    public ArrayList<Movie> getAvailableMovies(){
-        ArrayList<Movie> availableMovies = new ArrayList<>();
-        for (int i=0;i<movies.size();i++){
-            if(movies.get(i).isAvailable()){
-                availableMovies.add(movies.get(i));
+    public ArrayList<Item> getAvailableItems(){
+        ArrayList<Item> availableItems = new ArrayList<>();
+        for (int i=0;i<items.size();i++){
+            if(items.get(i).isAvailable()){
+                availableItems.add(items.get(i));
             }
         }
-       return availableMovies;
+        return availableItems;
     }
-    public void rentMovie(Movie movie, Customer customer){
+    public void rentItem(Item item, Customer customer){
         boolean check = false;
-        int id = movie.getId()+customer.getId();
-        movie.setAvailable(check);
-        Rental rental = new Rental(movie ,customer ,id);
+        int id = item.getId()+customer.getId();
+        item.setAvailable(check);
+        Rental rental = new Rental(item ,customer ,id);
         rentals.add(rental);
         customer.rentals.add(rental);
     }
     public void returnMovie(Rental rental){
         boolean available = true;
-        rental.getMovie().setAvailable(available);
+        rental.getItem().setAvailable(available);
         rental.getCustomer().rentals.remove(rental);
         Date date = new Date();
         rental.setReturndate(date);
@@ -50,10 +52,10 @@ public class RentalStore {
         }
         return null;
     }
-    public Movie getMovieById(int id){
-        for(int i=0;i<movies.size();i++){
-            if(movies.get(i).getId()==id){
-                return movies.get(i);
+    public Item getItemById(int id){
+        for(int i=0;i<items.size();i++){
+            if(items.get(i).getId()==id){
+                return items.get(i);
             }
         }
         return null;
