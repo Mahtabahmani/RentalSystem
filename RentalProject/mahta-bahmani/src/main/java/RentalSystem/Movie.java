@@ -1,3 +1,4 @@
+package RentalSystem;
 import java.util.Date;
 
 public class Movie extends Item{

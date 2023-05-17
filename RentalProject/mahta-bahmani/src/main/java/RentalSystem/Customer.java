@@ -1,3 +1,4 @@
+package RentalSystem;
 import java.util.ArrayList;
 
 public class Customer {

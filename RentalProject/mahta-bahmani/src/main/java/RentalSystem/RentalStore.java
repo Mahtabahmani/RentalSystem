@@ -1,3 +1,4 @@
+package RentalSystem;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,14 +28,16 @@ public class RentalStore {
                 availableItems.add(items.get(i));
             }
         }
-        return availableItems;
+       return availableItems;
     }
     public void rentItem(Item item, Customer customer){
         boolean check = false;
-        int id = item.getId()+customer.getId();
+        int id = item.getId()*10+customer.getId();
         item.setAvailable(check);
         Rental rental = new Rental(item ,customer ,id);
         rentals.add(rental);
+        if(customer.rentals == null)
+            customer.rentals = new ArrayList<>();
         customer.rentals.add(rental);
     }
     public void returnMovie(Rental rental){

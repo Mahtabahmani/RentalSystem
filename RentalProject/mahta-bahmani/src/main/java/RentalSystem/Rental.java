@@ -1,3 +1,5 @@
+package RentalSystem;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Rental {
@@ -9,7 +11,7 @@ public class Rental {
 
     public Rental(Item item,Customer customer,int id){
         this.item = item;
-        this.customer = customer;
+        this.customer = new Customer(customer.getName(), customer.getEmail(), customer.getPhone(), customer.getAddress(), customer.getId());
         this.id = id;
         Date date = new Date();
         this.rentaldate = date;
